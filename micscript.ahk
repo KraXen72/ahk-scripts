@@ -49,7 +49,13 @@ monitor_width = 2560
         ;Gui, Add, Text, vState, getting info...
         Gui, Add, Button, w200, Connect
         Gui, Add, Button, w200, Disconnect
-        Gui, Show, % "x" . monitor_width - 240 . " Y50"
+		SysGet, MonNum, MonitorCount
+		if (MonNum = 1) {
+			Gui, Show, % "x" . 1920 - 240 . " Y50"
+		} else {
+			Gui, Show, % "x" . monitor_width - 240 . " Y50"
+		}
+        
         if (injected == 1) {
             GuiControl,, Status, Injected
         }
